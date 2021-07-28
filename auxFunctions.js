@@ -81,7 +81,7 @@ const removeAllDuplicates = (datas) => {
 }
 
 const createHTML = (freqArray) => {
-    let htmlString = "<h1>Relatório de Frequência via Zoom da Ala Guarany</h1>\n";
+    let htmlString = "<h1>Relatório de Frequência via Zoom das Alas da Estaca Guarany</h1>\n";
     freqArray.forEach((data) => {
         let respostas = data[1];
         htmlString += `<h2>${data[0]}</h2>`;
