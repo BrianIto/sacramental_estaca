@@ -1,0 +1,30 @@
+#relatorio_screen {
+	display: none;
+}
+
+#relatorio_screen table {
+	width: 90%;
+	text-align: center;
+}
+
+#relatorio_screen table thead {
+	font-weight: bold;
+}
+
+#relatorio_screen td {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#relatorio_screen tr:nth-child(even) {
+	background-color: #F0F0F0;
+}
+
+@media screen and (max-width: 641px) {
+	div {
+		min-height: 20vh;
+	}
+	div > form > h1 {
+		font-size: 18px;
+	}
+}

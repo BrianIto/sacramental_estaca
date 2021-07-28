@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+            integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./auxFunctions.js"></script>
+    <link rel="stylesheet" href="css.css">
+    <title>Document</title>
+    <script>
+        $(document).ready(async () => {
+
+            $("#senha").on("submit", async e => {
+                let log = console.log
+                e.preventDefault();
+                const form = e.target;
+                let valor = verificaSenhaRetornaAlaSelecionada(form.senha.value);
+                /* Se a senha existe */
+                if (valor) {
+                    let [ala, alaSelecionada] = valor;
+                    const respostas_crude = await pegaDoBancoDeDados();
+                    /* Limpeza completa de Dados */
+                    let respostas = limpaDiaEFiltraAla(respostas_crude, alaSelecionada);
+                    let freqDict = criaDicionarioDeFrequencia(respostas);
+                    let freqArray = Object.entries(freqDict).reverse();
+                    $("#login_screen").slideUp(300);
+                    setTimeout(() => {
+                        removeAllDuplicates(freqArray);
+                        $("#relatorio_screen").fadeIn(500);
+                        $("#relatorio_screen").html(createHTML(freqArray));
+                    }, 300);
+
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+<form id="senha">
+    <div id="login_screen">
+        <h1>Relatório de Frequência via Zoom</h1>
+        <input name="senha" id="senha" placeholder="Informe a senha" type="password">
+        <button>Verificar frequência</button>
+    </div>
+</form>
+
+<div id="relatorio_screen">
+    <!--        <h2>Dia 02/05</h2>-->
+    <!--        <table>-->
+    <!--            <thead>-->
+    <!--                <td>Ala</td>-->
+    <!--                <td>Nome da Pessoa / Família</td>-->
+    <!--                <td>Quantidade Assitindo</td>-->
+    <!--            </thead>-->
+    <!--            <tbody>-->
+    <!--                <tr>-->
+    <!--                    <td>Guarany</td>-->
+    <!--                    <td>Família Machado</td>-->
+    <!--                    <td>5</td>-->
+    <!--                </tr>-->
+    <!--            </tbody>-->
+    <!--        </table>-->
+</div>
+</body>
+</html>
