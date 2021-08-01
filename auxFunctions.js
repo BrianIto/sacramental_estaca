@@ -95,7 +95,7 @@ const createHTML = (freqArray) => {
                            <tbody>`;
         let total = 0;
         respostas.forEach(resposta => {
-            total += resposta.quantidade;
+            total += +resposta.quantidade;
             htmlString += `<tr>
                                 <td>${resposta.ala}</td>
                                 <td>${resposta.nome}</td>
