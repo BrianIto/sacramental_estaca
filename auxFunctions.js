@@ -82,6 +82,7 @@ const removeAllDuplicates = (datas) => {
 
 const createHTML = (freqArray) => {
     let htmlString = "<h1>Relatório de Frequência via Zoom das Alas da Estaca Guarany</h1>\n";
+    let total = 0;
     freqArray.forEach((data) => {
         let respostas = data[1];
         htmlString += `<h2>${data[0]}</h2>`;
@@ -92,7 +93,9 @@ const createHTML = (freqArray) => {
                                 <td>Quantidade Assistindo</td>
                             </thead>
                            <tbody>`;
+        let total = 0;
         respostas.forEach(resposta => {
+            total += resposta.quantidade;
             htmlString += `<tr>
                                 <td>${resposta.ala}</td>
                                 <td>${resposta.nome}</td>
@@ -100,6 +103,7 @@ const createHTML = (freqArray) => {
                             </tr>`
         });
         htmlString += `</tbody></table>`
+        htmlString += `Quantidade total de pessoas no dia: ${total}`
     });
     return htmlString;
 }
