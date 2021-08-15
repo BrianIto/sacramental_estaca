@@ -38,7 +38,7 @@ const limpaDiaEFiltraAla = (respostas, ala) => {
     respostas = respostas.map(resposta => {
         let data = new Date(resposta.data)
         delete resposta._id;
-        return {...resposta, data: data.getDate() + "/" + data.getMonth() + "/" + data.getFullYear()}
+        return {...resposta, data: data.getDate() + "/" + (data.getMonth() + 1) + "/" + data.getFullYear()}
     })
     if (ala !==  "Estaca Guarany")
         respostas = respostas.filter(resposta => resposta.ala === ala)
