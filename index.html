@@ -2,13 +2,14 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ala Guarany - Link do Zoom</title>
+    <meta charset="utf-8">
     <link rel="stylesheet" href="./css.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
         $(document).ready(async () => {
 
-            const AlaAtual = "Campo Dourado"
+            const AlaAtual = "Estaca Guarany"
 
             const findAla = (nomeAla, arrayAla) => {
                 for (let ala of arrayAla)
@@ -24,13 +25,14 @@
                 await axios.post("https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/sacramental-gjbpt/service/respostas/incoming_webhook/createService", {
                     data: new Date(),
                     quantidade: form.quantidade.value,
-                    ala: AlaAtual,
+                    ala: "Estaca Guarany",
                     nome: form.nome.value
                 })
 
-                $("#form").html(`<h1>Pronto!</h1><h3>Caso precise entrar novamente, apenas clique no link abaixo</h3><button
-            style="background-color: #6666FF; border: none; color: #FFF; padding: 15px 45px; border-radius: 45px; cursor: pointer; font-size: 18px; margin-top: 5px">Ir
-            para o Zoom</button>`)
+                $("#form").html(`<h1>Pronto!</h1><h3>Caso precise entrar novamente, apenas clique no link abaixo</h3>
+            <button class="botao">
+                <h2> IR PARA O LINK DO ZOOM </h2>
+            </button>`)
 
                 let response = await axios.post("https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/sacramental-gjbpt/service/getAlas/incoming_webhook/getAla");
                 let alas = response.data;
@@ -41,7 +43,7 @@
         });
     </script>
 </head>
-<body style="text-align: center; display: flex; align-items: center; flex-direction: column; justify-content: center; height: 96vh; background: url('https://th.bing.com/th/id/Rdb3f737c0802c96c0140af6c8dd1c690?rik=Ir2rrmiKaydegA&riu=http%3a%2f%2fwww.understandingmormonism.org%2ffiles%2f2008%2f06%2fmoroni-mormon.jpg&ehk=NmFRVAKbdCkuFcs%2bdnieL7LpVbBRCY52D14MRrRzTLw%3d&risl=&pid=ImgRaw')">
+<!-- <body style="text-align: center; display: flex; align-items: center; flex-direction: column; justify-content: center; height: 96vh; background: url('https://th.bing.com/th/id/Rdb3f737c0802c96c0140af6c8dd1c690?rik=Ir2rrmiKaydegA&riu=http%3a%2f%2fwww.understandingmormonism.org%2ffiles%2f2008%2f06%2fmoroni-mormon.jpg&ehk=NmFRVAKbdCkuFcs%2bdnieL7LpVbBRCY52D14MRrRzTLw%3d&risl=&pid=ImgRaw')">
 <h2 style="color: #FFF">Reunião Sacramental - Ala Guarany</h2>
 <div style="box-shadow: 0 3px 16px rgba(0,0,0,0.5); padding: 20px 3px; background-color: #FFF; border-radius: 10px">
     <form id="form" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
@@ -55,6 +57,39 @@
             para o Zoom
         </button>
     </form>
+</div> -->
+
+<div class="container">
+    <div class="capela">
+        <img src="capela.svg"/>
+    </div>
+    <div class="zoom">
+        <img src="zoomlogo.svg"/>
+        <h1 class="ala"> CONFERÊNCIA DA ESTACA </h1>
+        <h3 class="estaca"> ESTACA GUARANY </h3>
+        <form id="form">
+            <div>
+                <input
+                        name="nome"
+                        placeholder="Seu nome ou da família"
+                        class="caixinha1"
+                        type="text"/>
+            </div>
+            <div>
+                <input
+                        name="quantidade"
+                        placeholder="Quantidade de pessoas"
+                        class="caixinha2"
+                        type="number"/>
+            </div>
+            <button class="botao">
+                <h2> IR PARA O LINK DO ZOOM </h2>
+            </button>
+        </form>
+
+    </div>
 </div>
+
+
 </body>
 </html>
