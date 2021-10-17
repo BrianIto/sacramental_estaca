@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600&display=swap%27');
+
 #relatorio_screen {
 	display: none;
 }
@@ -20,11 +22,74 @@
 	background-color: #F0F0F0;
 }
 
-@media screen and (max-width: 641px) {
-	div {
-		min-height: 20vh;
-	}
-	div > form > h1 {
-		font-size: 18px;
-	}
+body{
+margin: 0;
+padding: 0;
+}
+.container{
+display: flex;
+}
+.capela{
+flex: 1;
+}
+.capela >img{
+margin-top: 14px;
+width: 100%;
+}
+.zoom >img{
+width: 35%;
+}
+.zoom{
+background-color: #678AE3;
+text-align: center;
+flex: 1;
+height: calc(100vh - 180px);
+padding: 90px 60px;
+font-family: "Josefin Sans";
+color: white;
+letter-spacing: 2.45px;
+}
+.ala{
+margin-top: 40px;
+}
+.estaca{
+margin-bottom: 35px;
+}
+.caixinha1, .caixinha2{
+margin-bottom: 10px;
+outline: none;
+border: none;
+width: 60%;
+font-size: 20px;
+padding: 15px;
+font-family: "Josefin Sans";
+border-radius: 5px;
+}
+.caixinha1::placeholder, .caixinha2::placeholder{
+color: #678AE3;
+}
+.botao{
+margin: 15px;
+border: 2px solid white;
+background-color: transparent;
+color: white;
+font-family: "Josefin Sans";
+padding: 5px 20px;
+width: 65%;
+}
+
+@media screen and (max-width: 690px) {
+.container {
+	flex-direction: column;
+}
+.zoom {
+	padding: 40px 0px;
+	margin-top: -40px;
+}
+.caixinha1, .caixinha2 {
+	width: 80%;
+}
+.botao {
+	width: 85%;
+}
 }
